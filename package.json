@@ -1,0 +1,31 @@
+{
+  "name": "api_desafio_full_stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/uuid": "^9.0.0",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.9.0",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.8",
+    "ts-node-dev": "^2.0.0",
+    "typeorm": "^0.3.12",
+    "typescript": "^4.9.5",
+    "uuid": "^9.0.0",
+    "yup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.13.0"
+  },
+  "scripts": {
+    "dev": "ts-node-dev src/app.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
+  }
+}

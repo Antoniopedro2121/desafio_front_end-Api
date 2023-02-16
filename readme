@@ -12,6 +12,10 @@ E rodar o servidor com o comando
 
 - yarn dev
 
+# Testes
+
+- - comando para rodar os testes use o comando yarn test
+
 # As rotas da aplicação são as seguintes
 
 ## Base url http://localhost:3001
@@ -166,7 +170,3 @@ Exemplo
 ### Parar deletar um contato DELETE baseUrl/contato/id_do_contato
 
 - - requisitos da rota tem que estar logado
-
-# Testes
-
-- - comando para rodar os testes use o comando yarn test

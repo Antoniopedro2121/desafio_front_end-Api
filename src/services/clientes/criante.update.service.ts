@@ -17,6 +17,14 @@ const criateUpdateService = async (
     throw new AppError(400, "Usuario ja deletado");
   }
 
+  const emailValid = await criateRepository.findOne({
+    where: { email },
+  });
+
+  if (emailValid) {
+    throw new AppError(400, "Email ja cadastrado");
+  }
+
   await criateRepository
     .createQueryBuilder()
     .update(Cliente)

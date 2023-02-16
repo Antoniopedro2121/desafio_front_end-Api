@@ -1,0 +1,172 @@
+# Para iniciar o projeto tem que fazer o clone do repositorio
+
+## E usar o comando yarn para instalar as dependencias
+
+## Depois tem que colocar as o arquivo .env na raiz do projeto e seguir as instruções do arquivo .env.example
+
+## Depois com o .env configurado tem que rodar as migrations com o comando
+
+- yarn typeorm migration:run -d src/data-source.ts
+
+E rodar o servidor com o comando
+
+- yarn dev
+
+# As rotas da aplicação são as seguintes
+
+## Base url http://localhost:3001
+
+## Login
+
+- Login na Aplicação POST baseUrl/login
+
+requisitos da rota são senha e email do usuario cadastrado
+
+Exemplo
+
+```
+{
+	"email": "teste@email.com",
+	"password": "1234@"
+}
+
+```
+
+## User
+
+### Para cadastrar um usuario POST baseUrl/user
+
+- - requisitos da rota são senha, email e nome do usuario
+
+- - Exemplo
+
+```
+{
+	"name": "nome",
+	"password": "1234@",
+	"email": "teste@email.com"
+}
+```
+
+### Para pegar todos os usuarios GET baseUrl/user/all assim ira retornar todos os usuarios
+
+- - requisitos da rota tem que estar logado
+
+### Para pegar o usuario logado GET baseUrl/user assim ira retornar o usuario lagado na aplicação
+
+- - requisitos da rota tem que estar logado
+
+### Para atualizar o dados do usuario logado PATH baseUrl/user
+
+- - requisitos da rota são um dos seguintes dados senha, email ou nome novo do usuario e deve estar logado
+
+- - Exemplo
+
+```
+{
+	"name": "nome",
+	"password": "1234@",
+	"email": "teste@email.com"
+}
+```
+
+### Para deletar o usuario
+
+- - requisitos da rota tem que estar logado assim irar deletar o usuario logado
+
+## Client
+
+### Parar criar um criate POST baseUrl/client
+
+- - requisitos da rota tem que estar logado e os seguintes dados nome_completo, email e telefone
+
+Exemplo
+
+```
+{
+	"nome_completo": "teste",
+	"email":"email@email",
+	"telefone": 2199894844
+}
+```
+
+### Parar pegar todos os clientes GET baseUrl/client/all
+
+- - requisitos da rota tem que estar logado
+
+### Parar pegar um clientes GET baseUrl/client/id_do_cliente
+
+- - requisitos da rota tem que estar logado
+
+### Parar atualizar as informaçãoes do cliente PATH baseUrl/client/id_do_cliente
+
+- - requisitos da rota tem que estar logado e os dados que quer atualizar possiveis dados para a atualização são nome, email e telefone
+
+Exemplo
+
+```
+{
+	"nome_completo": "teste",
+	"email":"email@email",
+	"telefone": 2199894844
+}
+```
+
+### Parar deletar um cliente DELETE baseUrl/client/id_do_cliente
+
+- - requisitos da rota tem que estar logado
+
+/////
+
+## Contato
+
+### Parar criar um contato POST baseUrl/contato
+
+- - requisitos da rota tem que estar logado e os seguintes dados nome_completo, email e telefone
+- - dados opicionais são apelido
+
+Exemplo
+
+```
+{
+	"nome_completo": "teste",
+	"email":"email@email",
+	"telefone": 2199894844
+	"apelido": ""
+}
+```
+
+### Parar pegar todos os contato GET baseUrl/contato/all
+
+- - requisitos da rota tem que estar logado
+
+### Parar pegar um contato GET baseUrl/contato/id_do_contato
+
+- - requisitos da rota tem que estar logado
+
+### Parar pegar todos os contatos de um cliente GET baseUrl/contato/cliente/id_do_cliente
+
+- - requisitos da rota tem que estar logado
+
+### Parar atualizar as informaçãoes do cliente PATH baseUrl/contato/id_do_contato
+
+- - requisitos da rota tem que estar logado e os dados que quer atualizar possiveis dados para a atualização são nome, email telefone e apelido
+
+Exemplo
+
+```
+{
+	"nome_completo": "teste",
+	"email":"email@email",
+	"telefone": 2199894844,
+	"apelido": ""
+}
+```
+
+### Parar deletar um contato DELETE baseUrl/contato/id_do_contato
+
+- - requisitos da rota tem que estar logado
+
+# Testes
+
+- - comando para rodar os testes use o comando yarn test

@@ -1,23 +1,15 @@
 import { AppDataSource } from "../../data-source";
 import { AppError } from "../../../errors/appError";
-import { ICriateCadastro } from "../../interfaces/cliente.interface";
 import { Contatos } from "../../entities/contatos.entity";
 import { Cliente } from "../../entities/cliente.entity";
+import { IContatoCadastro } from "../../interfaces/contato.interface";
 
 const contatoCreateService = async (
-  { nome_completo, email, telefone }: ICriateCadastro,
+  { nome_completo, email, telefone, apelido }: IContatoCadastro,
   contatoId: string
 ) => {
   const contatoRepository = AppDataSource.getRepository(Contatos);
   const criateRepository = AppDataSource.getRepository(Cliente);
-
-  const contatoExist = await contatoRepository.findOne({
-    where: { email: email },
-  });
-
-  if (contatoExist) {
-    throw new AppError(400, "E-mail ja cadastrado");
-  }
 
   const criateExist = await criateRepository.findOne({
     where: { id: contatoId },
@@ -33,6 +25,7 @@ const contatoCreateService = async (
   newContato.email = email;
   newContato.telefone = telefone;
   newContato.cliente = criateExist;
+  apelido !== undefined ? (newContato.apelido = apelido) : null;
 
   contatoRepository.create(newContato);
   await contatoRepository.save(newContato);

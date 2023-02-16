@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   contatoAllController,
+  contatoByClienteController,
   contatoByIdController,
   contatoCreateController,
   contatoDeleteController,
@@ -52,15 +53,15 @@ routes.post("/login", loginController);
 
 //Criantes rotas
 routes.post(
-  "/criante",
+  "/client",
   autentificarToken,
   validateCrianteCreate(crianteCreateSchema),
   crianteCreateController
 );
-routes.get("/criante/all", autentificarToken, crianteAllController);
-routes.get("/criante/:id", autentificarToken, criateByIdController);
-routes.patch("/criante/:id", autentificarToken, criateUpdateController);
-routes.delete("/criante/:id", autentificarToken, criateDeleteController);
+routes.get("/client/all", autentificarToken, crianteAllController);
+routes.get("/client/:id", autentificarToken, criateByIdController);
+routes.patch("/client/:id", autentificarToken, criateUpdateController);
+routes.delete("/client/:id", autentificarToken, criateDeleteController);
 
 //Contato rotas
 routes.post(
@@ -71,6 +72,11 @@ routes.post(
 );
 routes.get("/contato/all", autentificarToken, contatoAllController);
 routes.get("/contato/:id", autentificarToken, contatoByIdController);
+routes.get(
+  "/contato/cliente/:id",
+  autentificarToken,
+  contatoByClienteController
+);
 routes.patch("/contato/:id", autentificarToken, contatoUpdateController);
 routes.delete("/contato/:id", autentificarToken, contatoDeleteController);
 

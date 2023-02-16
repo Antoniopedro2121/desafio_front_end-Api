@@ -9,22 +9,18 @@ import jwt from "jsonwebtoken";
 const loginService = async ({ email, password, name }: ICreateUser) => {
   const userRepository = AppDataSource.getRepository(User);
 
-  if (email == undefined || password == undefined) {
-    throw new AppError(400, `faltando informação ${email} ${password} 1`);
-  }
-
   const userExist = await userRepository.findOne({
     where: { email: email },
   });
 
   if (!userExist) {
-    throw new AppError(400, "Login invalido");
+    throw new AppError(400, "Invalid user or password");
   }
 
   const passwordMatch = await compare(password, userExist.password);
 
   if (!passwordMatch) {
-    throw new Error("Invalid user or password");
+    throw new AppError(400, "Invalid user or password");
   }
 
   const token = jwt.sign(

@@ -17,7 +17,7 @@ export class Contatos {
   @Column({ length: 250 })
   nome_completo: string;
 
-  @Column({ length: 250, unique: true })
+  @Column({ length: 250 })
   email: string;
 
   @Column({ length: 250, nullable: true })
@@ -32,6 +32,8 @@ export class Contatos {
   @UpdateDateColumn()
   date_update: Date;
 
-  @ManyToOne((type) => Cliente, (cliente) => cliente.contatos)
+  @ManyToOne((type) => Cliente, (cliente) => cliente.contatos, {
+    onDelete: "CASCADE",
+  })
   cliente: Cliente;
 }
